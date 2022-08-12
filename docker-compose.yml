@@ -1,0 +1,109 @@
+# 关闭防火墙后docker需要重启：service docker restart
+version: '3.1'
+services:
+#---------------------node14----------------------
+  node14:
+    restart: always
+    image: node:14.16.0
+    container_name: "node14"
+    volumes:
+      - "/opt/docker/docker-compose/node14:/opt/node14"                #nginx配置文件映射
+    stdin_open: true    #https://www.jianshu.com/p/b3b88bc2139a
+    tty: true
+#-----------------------------nginx--------------------------------------------------
+#   nginx:  
+#     restart: always
+#     image: daocloud.io/library/nginx:latest
+#     container_name: "nginx"
+#     ports:
+#       - "80:80"
+#       - "443:443"
+#     environment:
+#       TZ: "Asia/Shanghai"     #指定时区
+#     volumes:
+#       - "/opt/docker_nginx/nginx/conf.d:/etc/nginx/conf.d"                #nginx配置文件映射
+#       - "/opt/ssl:/usr/share/nginx/html/ssl"       #ssl
+#       - "/opt/juzi/html:/usr/share/nginx/html/juzi"             #桔子家长
+#       - "/opt/postCode/resources:/usr/share/nginx/html/resources" #静态资源文件
+#       - "/opt/postCode/html:/usr/share/nginx/html/html" #静态html文件
+#       - "/opt/postCode/logs:/usr/share/nginx/html/logs" #日志文件
+# #-----------------------------mysql------------------------------------------------
+#   mysql:
+#     restart: always
+#     image: daocloud.io/library/mysql:5.7.4
+#     container_name: "mysql"
+#     ports:
+#       - "3306:3306"
+#     environment:
+#       TZ: "Asia/Shanghai"     #指定时区
+#       MYSQL_ROOT_PASSWORD:  hugaojie2021 # dojanep47902tyoslwYIJ547865_901f_hrzg
+#     volumes:
+#       - "/opt/docker_mysql/data:/var/lib/mysql"
+# #------------------------------redis--------------------------------------------------
+#   redis:
+#     restart: always
+#     image: daocloud.io/library/redis:3.2.9
+#     container_name: "redis"
+#     command: redis-server --requirepass qazwsxedcrfvtgbyhnujmikolp    #在容器启动后执行的代码
+#     ports:
+#       - "6379:6379" 
+#     environment:
+#       TZ: "Asia/Shanghai"     #指定时区
+#     volumes:
+#       - "/opt/docker_redis/redis:/usr/local/etc/redis"
+# #--------------------------------rabbitmq------------------------------------------------------
+#   rabbitmq:
+#     restart: always
+#     image: daocloud.io/library/rabbitmq:3.7.26-management
+#     container_name: "rabbitmq"
+#     hostname: myRabbitmq
+#     environment:
+#       TZ: "Asia/Shanghai"     #指定时区
+#       RABBITMQ_DEFAULT_USER: root
+#       RABBITMQ_DEFAULT_PASS: 15572046172
+#     ports: 
+#       - "8672:15672"  #http端口
+#       - "8673:5672"   #后端使用通信端口
+#       - "8674:15674"  #前端使用的STOMP通道端口
+#       - "8675:61613"  #后端使用STOMP通信端口
+#     volumes:
+#       - "/opt/docker_rabbitmq:/var/lib/rabbitmq"
+#     #容器启动后执行的命令      
+#     #command: rabbitmq-plugins enable rabbitmq_web_stomp
+#     #command: rabbitmq-plugins enable rabbitmq_web_stomp_examples
+#     #    rabbitmq-plugins enable rabbitmq_web_stomp   #进入容器手动执行吧，自动执行太难了啊
+#     #    rabbitmq-plugins enable rabbitmq_web_stomp_examples
+#       # service rabbitmq-server stop
+#       # service rabbitmq-server start
+# #---------------------mongodb----------------------
+#   mongodb:
+#     restart: always
+#     image: daocloud.io/library/mongo:3.4.5
+#     container_name: "mongodb"
+#     ports:
+#       - "27017:27017"
+#     environment:
+#       MONGO_INITDB_ROOT_USERNAME: root
+#       MONGO_INITDB_ROOT_PASSWORD: 15572046172
+
+      
+#---------------------jenkins----------------------
+  # 不能依赖宿主环境，需要手动在容器内配置环境
+  # jenkins:
+  #   restart: always
+  #   image: jenkins/jenkins:lts
+  #   container_name: jenkins
+  #   environment:
+  #       - TZ=Asia/Shanghai
+  #   volumes:
+  #       - /opt/jenkins/jenkins_home:/var/jenkins_home
+  #       - /run/docker.sock:/var/run/docker.sock
+  #       - /usr/bin/docker:/usr/bin/docker
+  #       - /usr/lib64/libltdl.so.7.3.0:/usr/lib/x86_64-linux-gnu/libltdl.so.7
+  #   ports:
+  #     - "8080:8080"
+  #   expose:
+  #     - "8080"
+  #     - "50000"
+  #   privileged: true
+  #   user: root
