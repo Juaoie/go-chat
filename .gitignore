@@ -1,0 +1,6 @@
+bin/
+go.sum
+go-chat
+test.sh
+test/
+docker-compose.yml

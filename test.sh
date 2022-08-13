@@ -1,3 +1,4 @@
 cd /opt/node14/test
-node -v
-npm -v
+yarn install #fdfd
+#rerere
+yarn build

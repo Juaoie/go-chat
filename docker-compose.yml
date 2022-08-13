@@ -6,8 +6,10 @@ services:
     restart: always
     image: node:14.16.0
     container_name: "node14"
+    # command: node -v
+    # command: npm install /opt/node14
     volumes:
-      - "/opt/docker/docker-compose/node14:/opt/node14"                #nginx配置文件映射
+      - "/opt/dockers/docker-compose/node14:/opt/node14"                #nginx配置文件映射
     stdin_open: true    #https://www.jianshu.com/p/b3b88bc2139a
     tty: true
 #-----------------------------nginx--------------------------------------------------
