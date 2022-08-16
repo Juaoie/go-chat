@@ -1,5 +1,8 @@
 package config
 
 const (
-	DockerUrl = "https://get.daocloud.io/docker" //docker 安装包地址
+	//docker 安装包地址
+	DockerUrl = "https://get.daocloud.io/docker/"
+	//docker镜像地址
+	DockerImageUrl = "docker.io/library/"
 )

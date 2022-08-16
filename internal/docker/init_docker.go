@@ -2,7 +2,7 @@ package docker
 
 import (
 	"fmt"
-	"go-chat/internal/config"
+	"go-docker-cli/internal/config"
 	"os/exec"
 	"runtime"
 )

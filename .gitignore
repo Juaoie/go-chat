@@ -1,6 +1,6 @@
+
+#
+go-docker-cli-config/
 bin/
 go.sum
 go-chat
-test.sh
-test/
-docker-compose.yml
